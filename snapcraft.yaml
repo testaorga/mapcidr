@@ -1,0 +1,43 @@
+name: mapcidrx
+summary: Utility to perform multiple operations for a given subnet/CIDR ranges
+description: |
+  A utility program to perform multiple operations for a given subnet/cidr ranges. 
+  mapCIDR is developed to ease load distribution for mass scanning operations,
+  it can be used both as a library and as independent CLI tool.
+version: 'v0.0.8'
+license: MIT	
+base: core18
+grade: stable
+confinement: devmode # strict
+
+apps:
+  mapcidr:
+    command: bin/mapcidr
+    plugs:
+      - home
+      - network
+      - removable-media
+      - dot-mapcidr
+
+plugs:
+  dot-mapcidr:
+    interface: personal-files
+    write:
+      - $HOME/.config/mapcidr
+
+parts:
+  mapcidr:
+    go-importpath: github.com/projectdiscovery/mapcidr
+    source: https://github.com/projectdiscovery/mapcidr.git
+    plugin: go
+    source-type: git
+    go-channel: latest/stable
+    build-packages:
+    - gcc
+
+# On a linux system
+# sudo apt install build-essential libpcap-dev
+# snap install snapcraft --classic
+# hash -r
+# snapcraft --use-lxd
+# sudo snap install --devmode --dangerous *.snap
