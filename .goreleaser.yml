@@ -42,11 +42,11 @@ snapcrafts:
           - home
           - network
           - removable-media
-          - dot-mapcidr
+          # - dot-mapcidr
 
-    plugs:
-      dot-mapcidr:
-        interface: personal-files
-        write:
-          - $HOME/.config/mapcidr
+    # plugs:
+    #   dot-mapcidr:
+    #     interface: personal-files
+    #     write:
+    #       - $HOME/.config/mapcidr
 
