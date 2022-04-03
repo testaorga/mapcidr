@@ -17,13 +17,10 @@ jobs:
         uses: actions/setup-go@v2
         with: 
           go-version: 1.16
-      - uses: snapcore/action-build@v1
-        id: build
-      - uses: snapcore/action-publish@v1
+      - name: Install Snapcraft
+        uses: samuelmeuli/action-snapcraft@v1
         with:
-          store_login: ${{ secrets.STORE_LOGIN }}
-          snap: ${{ steps.build.outputs.snap }}
-          release: edge
+          snapcraft_token: ${{ secrets.snapcraft_token }}
       - name: "Create release on GitHub"
         uses: goreleaser/goreleaser-action@v2
         env: 
