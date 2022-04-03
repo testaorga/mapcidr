@@ -26,6 +26,6 @@ jobs:
         env: 
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with: 
-          args: "release --rm-dist --parallelism=1"
+          args: "release --rm-dist" # --parallelism=1
           version: latest
           workdir: .
